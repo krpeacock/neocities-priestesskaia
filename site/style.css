@@ -1,0 +1,258 @@
+/* ============================================================
+   Priestess Kaia — style.css
+   Handwritten, no frameworks. One file, plain elements only,
+   so every page (existing and future) inherits it for free.
+   ============================================================ */
+
+/* --- palette & settings -----------------------------------
+   black hide, silver metal, lavender accents                */
+:root {
+  --bg:            #0d0d10;  /* true near-black              */
+  --panel:         #16161c;  /* slightly lifted surface      */
+  --text:          #cdd0d6;  /* silver for body text         */
+  --muted:         #8b8f9a;  /* tarnished silver, secondary  */
+  --lavender:      #b79ae0;  /* accent: links & highlights   */
+  --lavender-dark: #5f4a8f;  /* deep lavender for hover fill */
+  --silver:        #c4c8d0;  /* accent: rules & metal shine  */
+  --line:          #2a2b33;  /* quiet borders                */
+  --measure:  42rem;    /* comfortable reading width          */
+}
+
+/* --- page frame -------------------------------------------- */
+html {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;      /* mobile-first: tight on small screens */
+  max-width: var(--measure);
+  font: 16px/1.6 Georgia, "Times New Roman", serif;
+}
+
+/* --- headings ---------------------------------------------- */
+h1, h2, h3 {
+  font-family: Palatino, Georgia, serif;
+  line-height: 1.2;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 3px double var(--silver); /* chain-stitch rule */
+}
+
+h2 { font-size: 1.4rem; margin-top: 2.2rem; }
+h3 { font-size: 1.1rem; margin-top: 1.8rem; color: var(--lavender); }
+
+/* --- links -------------------------------------------------- */
+a {
+  color: var(--lavender);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a:visited { color: var(--silver); }
+a:hover,
+a:focus-visible {
+  color: #fff;
+  background: var(--lavender-dark);
+  text-decoration: none;
+}
+a:focus-visible {
+  outline: 2px solid var(--lavender);
+  outline-offset: 2px;
+}
+
+/* --- body elements ------------------------------------------ */
+p, ul, ol { margin: 0 0 1.1rem; }
+li { margin-bottom: 0.35rem; }
+
+strong { color: #fff; }               /* polished silver  */
+em { color: var(--lavender); font-style: italic; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.5rem 0;
+}
+
+blockquote {
+  margin: 1.5rem 0;
+  padding: 0.25rem 0 0.25rem 1.1rem;
+  border-left: 4px solid var(--lavender);
+  color: var(--muted);
+  font-style: italic;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+}
+
+/* Images are exported above 1x pixel density: the 1152x1536 headshot shows
+   as 768x1024 CSS pixels (1.5x - still crisp on retina, ~3x smaller file
+   than 2x export), the 1050x420 header shows as 700x280 (also 1.5x). Narrow
+   columns cap them further.
+   Convention: set width = native pixels / density on each <img>. */
+#profile { width: 768px; }
+
+/* banner images at the top of a page, same 2x convention */
+.page-header { width: 700px; }
+
+code, pre, kbd {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--panel);
+  color: var(--lavender);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+code { padding: 0.1em 0.35em; }
+pre  { padding: 0.9rem 1rem; overflow-x: auto; }
+pre code { padding: 0; border: 0; background: none; }
+
+::selection {
+  background: var(--lavender);
+  color: #0d0d10;
+}
+
+/* --- tables -------------------------------------------------- */
+table { border-collapse: collapse; margin: 1.25rem 0; }
+th, td {
+  border: 1px solid var(--line);
+  padding: 0.4rem 0.7rem;
+  text-align: left;
+}
+th { color: var(--silver); font-weight: bold; }
+
+/* --- forms --------------------------------------------------- */
+input, textarea, select, button {
+  font: inherit;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 0.4rem 0.6rem;
+}
+input:focus, textarea:focus, select:focus, button:focus {
+  outline: 2px solid var(--lavender);
+  outline-offset: 1px;
+}
+button, input[type="submit"] {
+  border-color: var(--lavender-dark);
+  background: var(--lavender-dark);
+  cursor: pointer;
+}
+button:hover, input[type="submit"]:hover { background: var(--lavender); color: #0d0d10; }
+
+/* --- <gathio-events> custom element -------------------------
+   light-DOM tiles, themed like everything else                */
+gathio-events {
+  display: block;
+  margin: 1.5rem 0;
+}
+.event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;                       /* tiles, mobile-first: 1-up, then 2-up */
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+.event-item {
+  margin: 0;
+}
+.event-item a {
+  display: flex;
+  flex-direction: column;              /* image on top, text below */
+  gap: 0.35rem;
+  height: 100%;
+  padding: 0.7rem 0.9rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--lavender);
+  border-radius: 4px;
+  color: var(--text);
+  text-decoration: none;
+}
+.event-item a:hover,
+.event-item a:focus-visible {
+  background: var(--lavender-dark);
+  color: #fff;
+}
+.event-item a > img {
+  width: 100%;
+  height: auto;
+  margin: 0 0 0.35rem;
+  border-radius: 3px;
+}
+.event-date {
+  font-family: Palatino, Georgia, serif;
+  color: var(--silver);
+  white-space: nowrap;
+}
+.event-time { color: var(--muted); font-family: inherit; }
+.event-name { font-weight: bold; }
+.event-location {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.events-status {
+  margin: 0.8rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+@media (min-width: 480px) {
+  .event-item a { padding: 0.8rem 1.1rem; }
+}
+@media (min-width: 720px) {
+  .event-list { grid-template-columns: repeat(3, 1fr); }  /* 3-up on desktop */
+}
+
+/* --- <site-footer> custom element ---------------------------- */
+site-footer {
+  display: block;
+  margin-top: 3rem;
+}
+.site-footer {
+  border-top: 3px double var(--silver); /* matches the h1 rule */
+  padding-top: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.footer-nav {
+  margin-bottom: 0.5rem;
+}
+.footer-credits { margin: 0; }
+
+/* --- larger screens: enhance, never break (mobile-first) ---- */
+@media (min-width: 480px) {
+  body { font-size: 17px; line-height: 1.65; padding: 2.5rem 1.25rem 4rem; }
+  h1 { font-size: 2rem; }
+}
+
+/* --- accessibility ------------------------------------------ */
+/* Touch targets: links and buttons stay finger-sized on small screens. */
+@media (pointer: coarse) {
+  a { padding: 0.1em 0.05em; }
+  button, input[type="submit"] { padding: 0.6rem 0.9rem; }
+}
+
+/* --- respect light-sighted environments ------------------------
+   If someone runs a light theme, keep it readable, don't invert. */
+@media (prefers-contrast: more) {
+  :root { --muted: #b9bdc6; --line: #4a4d59; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

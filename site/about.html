@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Priestess Kaia</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <script type="module" src="/components/index.js"></script>
+  </head>
+  <body>
+      <main>
+          <h1>About</h1>
+          <p>Priestess Kaia is a dyke and organizer in the SF Leather community — co-organizer of <a href="/puddle.html">Puddle</a>, a sapphic play party, and the <a href="/t4t-leather.html">T4T Leather Community</a>.</p>
+          <p>This site is deliberately small: handwritten HTML and CSS, a few of my own web components, no frameworks, no trackers. The event tiles on these pages are fetched live from my own Gathio instance — the source of truth for dates, venues and RSVPs.</p>
+
+          <h2>The ecosystem</h2>
+          <p>This corner of the web is built on community-owned tools:</p>
+          <ul>
+            <li><a href="https://neocities.org">Neocities</a> hosts this site — a non-profit hosting platform for handwritten, personal web pages.</li>
+            <li><a href="https://gathio.peacock.dev">Gathio</a> runs <a href="https://github.com/lowercasename/gathio">the event platform</a> behind the listings here — free, open source, self-hostable, and federated.</li>
+            <li><a href="https://activitypub.rocks">ActivityPub</a> is the open protocol those events speak, so they work with Mastodon and the wider fediverse instead of a walled garden.</li>
+            <li>Custom elements — <code>&lt;gathio-events&gt;</code> and <code>&lt;site-footer&gt;</code> — are plain browser-native web components, defined in <code>/components/</code>.</li>
+          </ul>
+
+          <p><a href="/">&larr; Back to the start</a></p>
+      </main>
+      <site-footer></site-footer>
+  </body>
+</html>
