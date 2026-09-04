@@ -1,0 +1,32 @@
+name: Deploy to Neocities
+
+# Runs whenever changes land on main that affect what gets published.
+# The actual sync logic lives in scripts/upload.mjs (incremental sha1 diff
+# against the Neocities API, including deletions).
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "scripts/upload.mjs"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch: {}
+
+concurrency:
+  group: neocities-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Sync site/ to Neocities
+        env:
+          NEOCITIES_API_TOKEN: ${{ secrets.NEOCITIES_API_TOKEN }}
+        run: node scripts/upload.mjs --skip-chrome
