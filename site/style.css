@@ -161,11 +161,11 @@ gathio-events {
 }
 .event-list {
   list-style: none;
-  margin: 0;
+  margin: 0 0 1rem;                    /* breathing room after the tiles */
   padding: 0;
   display: grid;                       /* tiles, mobile-first: 1-up, then 2-up */
   grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
+  gap: 1rem;
 }
 .event-item {
   margin: 0;
