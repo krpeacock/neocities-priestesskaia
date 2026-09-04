@@ -63,7 +63,7 @@ class GathioEvents extends HTMLElement {
         shown = [...past, ...upcoming];
       }
       const limit = Number(this.getAttribute("limit"));
-      if (limit > 0) shown = shown.slice(-limit); // keep the *nearest* N
+      if (limit > 0) shown = shown.slice(0, limit); // keep the *nearest* N
       this.render({ state: shown.length ? "ok" : "empty", events: shown, upcomingCount: upcoming.length });
     } catch (err) {
       console.warn("gathio-events: load failed:", err);
