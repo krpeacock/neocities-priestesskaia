@@ -153,12 +153,6 @@ class GathioEvents extends HTMLElement {
       list.appendChild(li);
     }
     this.appendChild(list);
-
-    const more = el("p", "events-status");
-    more.append(
-      `Full list and RSVPs: ${this.link("Kaia's Gathio", this.src)}.`,
-    );
-    this.appendChild(more);
   }
 
   link(text, href) {
